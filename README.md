@@ -1,4 +1,4 @@
-**Gesture Recognition - Write Up**
+
 
 **Problem Statement:**
 
@@ -22,8 +22,7 @@ We picked up the Conv3D approach as it is more lightweight since it uses a compa
 | **#Exp** | **Model** | **Params** | **Result** | **Decision + Explanation** |
 | --- | --- | --- | --- | --- |
 | **1** | **Conv3D+ ADAM** | **Batch\_size** :32 **Image\_size** :84 x 84 , **Frames** : 15, **Epochs** : 5 | loss: 1.1783 categorical\_accuracy: 0.4587 val\_loss: 46.6730 val\_categorical\_accuracy: 0.2400 | **A small ablation experiment to see our architecture is able to learn from the training data (overfits)** |
-| **2.1** | **Conv3D+ADAM** | **Batch\_size** :32 **Image\_size** :84 x 84 , **Frames** : 15, **Epochs** : 5 | **1 epoch takes 40-43 sec** | **We found out that length of sequence and image size has more impact on the training times as compared to the batch size**
-**Also we need to keep an eye out for out of memory error if we try to load in too much data (large batch size and large input dimensions) into the RAM . (even though we have written generator for the same)** |
+| **2.1** | **Conv3D+ADAM** | **Batch\_size** :32 **Image\_size** :84 x 84 , **Frames** : 15, **Epochs** : 5 | **1 epoch takes 40-43 sec** | **We found out that length of sequence and image size has more impact on the training times as compared to the batch size Also we need to keep an eye out for out of memory error if we try to load in too much data (large batch size and large input dimensions) into the RAM . (even though we have written generator for the same)** |
 | **2.2** | **Conv3D+ADAM** | **Batch\_size** :32 **Image\_size** :84 x 84 , **Frames** : 21, **Epochs** : 5 | **1 epoch takes 54-57 sec** |
 | **2.3** | **Conv3D+ADAM** | **Batch\_size** :64 **Image\_size** :120 x 120 , **Frames** : 21, **Epochs** : 5 | **1 epoch takes 59-61 sec** |
 | **2.4** | **Conv3D+ADAM** | **Batch\_size** :128 **Image\_size** :120x120 , **Frames** : 21, **Epochs** : 5 | **OOM when allocating tensor with shape [128,16,21,120,120]** |
